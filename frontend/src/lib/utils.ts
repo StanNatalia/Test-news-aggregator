@@ -6,17 +6,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const detectTopic = (title: string, topics: Topic[]): string | null => {
-  const lowerTitle = title.toLowerCase();
+export const detectTopic = (title: string, topics: Topic[]): Topic | null => {
+  const normalizedTitle = title.toLowerCase();
 
   for (const topic of topics) {
-    if (
-      topic.keywords.some((keyword) =>
-        lowerTitle.includes(keyword.toLowerCase()),
-      )
-    ) {
-      return topic.name;
-    }
+    const match = topic.keywords.some((keyword) =>
+      normalizedTitle.includes(keyword.toLowerCase()),
+    );
+
+    if (match) return topic;
   }
 
   return null;

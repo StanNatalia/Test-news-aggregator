@@ -2,7 +2,7 @@ import type { AllowedSource, Topic } from "@/types/cms";
 import axios from "axios";
 
 const strapiApi = axios.create({
-  baseURL: "http://localhost:1337/api",
+  baseURL: "https://unwavering-charity-6dbc8ad899.strapiapp.com/api",
 });
 
 export const getAllowedSources = async (): Promise<AllowedSource[]> => {

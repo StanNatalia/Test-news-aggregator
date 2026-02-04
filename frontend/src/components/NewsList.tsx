@@ -1,9 +1,9 @@
-import { useCMSConfig } from "@/hooks/useCmsConfig";
 import FilterBar from "./FilterBar";
 import { useFilter } from "@/hooks/useFilter";
-
 import { useNews } from "@/hooks/useNews";
 import { useNavigate } from "react-router";
+
+import { useCMSConfig } from "@/hooks/useCMSConfig";
 import { detectTopic } from "@/lib/utils";
 
 const NewsList = () => {
@@ -33,16 +33,6 @@ const NewsList = () => {
         : +new Date(a.publishedAt) - +new Date(b.publishedAt),
     );
 
-  console.log("articles", articles);
-  console.log("sources", sources);
-
-  console.log("from API:", articles.length);
-
-  console.log("after filters:", filtered.length);
-
-  console.log(articlesWithTopic.map((a) => a.source?.id));
-  console.log(sources.map((s) => s.name));
-
   return (
     <div className="space-y-6">
       <FilterBar
@@ -67,11 +57,7 @@ const NewsList = () => {
             className="border p-4 rounded"
           >
             <h3 className="font-semibold text-lg">{article.title}</h3>
-            {article.topic && (
-              <span className="text-xs px-2 py-1 rounded bg-muted">
-                {article.topic.name}
-              </span>
-            )}
+
             <p>{article.description}</p>
             <p className="text-sm text-muted-foreground">
               {article.source.name}
