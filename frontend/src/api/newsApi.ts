@@ -13,7 +13,7 @@ export const fetchNews = async () => {
   const { data } = await newsApi.get<NewsApiResponse>("/everything", {
     params: {
       q: "news",
-      pageSize: 50,
+      pageSize: 20,
     },
   });
   return data.articles;
