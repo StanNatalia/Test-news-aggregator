@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   async index(ctx) {
-    const { q = "news", pageSize = 20 } = ctx.query;
+    const { q = "news", pageSize = 50 } = ctx.query;
 
     const { data } = await axios.get("https://newsapi.org/v2/everything", {
       params: {
