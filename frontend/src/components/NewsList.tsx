@@ -33,6 +33,8 @@ const NewsList = () => {
         : +new Date(a.publishedAt) - +new Date(b.publishedAt),
     );
 
+  console.log(articles);
+
   return (
     <div className="space-y-6">
       <FilterBar

@@ -1,20 +1,11 @@
-import type { NewsApiResponse } from "@/types/news";
 import axios from "axios";
+import type { Article } from "@/types/news";
 
-const newsApi = axios.create({
-  baseURL: "https://newsapi.org/v2",
-  params: {
-    apiKey: import.meta.env.VITE_NEWS_API_KEY,
-    language: "en",
-  },
+const api = axios.create({
+  baseURL: "https://abundant-ducks-a0a7f07f12.strapiapp.com/api",
 });
 
-export const fetchNews = async () => {
-  const { data } = await newsApi.get<NewsApiResponse>("/everything", {
-    params: {
-      q: "news",
-      pageSize: 20,
-    },
-  });
-  return data.articles;
+export const fetchNews = async (): Promise<Article[]> => {
+  const { data } = await api.get("/news");
+  return data;
 };
